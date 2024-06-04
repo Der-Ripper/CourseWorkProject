@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<div class="sidenav">
+    <a href="{% url 'home' %}"><li><i class="home"></i>Главная</li></a>
+    <a href="{% url 'about' %}"><li><i class="about"></i>О нас</li></a>
+    <a href="{% url 'auth' %}"><li><i class="auth"></i>Авторизация</li></a>
+    <a href="{% url 'registr' %}"><li><i class="regist"></i>Регистрация</li></a>
+
+</div>
+<div class="main">
+    <h1>Заголовок главной страницы</h1>
+    <p>Всякий текст и потом картинки</p>
+</div>
+{% endblock %}
