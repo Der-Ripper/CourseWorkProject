@@ -1,0 +1,67 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}Главная{% endblock %}
+
+{% block content %}
+<form action="{% url 'send_claim' %}" method="get" style="border:1px solid #ccc">
+    <div class="container">
+      <h1>Заявка</h1>
+      <p>Заполняй поля</p>
+      <hr>
+
+      <label>
+        <input type="radio" name="phy_or_yur" value="1">
+        Физик
+      </label>
+      <br>
+      <label>
+        <input type="radio" name="phy_or_yur" value="2">
+        Юрик
+      </label>
+      <br>
+
+      <label for="name"><b>Имя дурачка</b></label>
+      <input type="text" placeholder="Введи свое имя" name="name" required>
+
+      <label for="age"><b>Возраст</b></label>
+      <input type="text" placeholder="Тут сколько тебе годиков" name="age" required>
+
+      <label for="living_address_street"><b>Адрес проживания - УЛИЦА</b></label>
+      <input type="text" placeholder="Где живем? УЛИЦА" name="living_address_street" required>
+
+      <label for="living_address_house"><b>Адрес проживания - ДОМ</b></label>
+      <input type="text" placeholder="Где живем? ДОМ" name="living_address_house" required>
+
+      <label for="registration_address_street"><b>Адрес регистрации - УЛИЦА</b></label>
+      <input type="text" placeholder="Че по прописке - УЛИЦА" name="registration_address_street" required>
+
+      <label for="registration_address_house"><b>Адрес регистрации - ДОМ</b></label>
+      <input type="text" placeholder="Че по прописке - ДОМ" name="registration_address_house" required>
+
+
+      <label for="email"><b>Email</b></label>
+      <input type="text" placeholder="Тут твое мыло (не урони)" name="email" required>
+
+      <label for="phone"><b>Номер телефона</b></label>
+      <input type="text" placeholder="Да, прям так пиши, мне лень делать норм форму" name="phone" required>
+
+      <label for="inn"><b>ИНН</b></label>
+      <input type="text" placeholder="Какие-то циферки..." name="inn" required>
+
+      <label for="passport"><b>Паспортные данные</b></label>
+      <input type="text" placeholder="Спасибо, возьму кредит" name="passport" required>
+
+      <label for="title"><b>Название проблемы</b></label>
+      <input type="text" placeholder="Название" name="title" required>
+
+      <label for="description"><b>Описание</b></label>
+      <input type="text" placeholder="Описание" name="description" required>
+
+
+      <div class="clearfix">
+        <button type="submit" class="signupbtn">Отправить</button>
+      </div>
+    </div>
+  </form>
+  
+{% endblock %}

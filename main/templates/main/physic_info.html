@@ -1,0 +1,17 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}О физике{% endblock %}
+
+{% block content %}
+<div class="main">
+    <h1>Данные физ лица</h1>
+    <p>Имя - {{name}}</p>
+    <p>Возраст - {{age}}</p>
+    <p>Email - {{email}}</p>
+    <p>Физик(1) или юрик(2) - {{phy_or_yur}}</p>
+    <p></p>
+    <form action="{% url 'claim' %}">
+        <input type="submit" value="Создать заявку" />
+    </form>
+</div>
+{% endblock %}
