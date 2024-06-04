@@ -1,5 +1,8 @@
 import psycopg2
+from psycopg2.extras import Json
+from psycopg2.extensions import register_adapter
 from conf import DB_NAME, DB_USER, DB_PASSWORD
+import json
 
 conn = psycopg2.connect(dbname=DB_NAME , user=DB_USER, password=DB_PASSWORD, host="127.0.0.1", port="5432")
 conn.autocommit = True
@@ -20,7 +23,16 @@ def client_auth(login, password):
     return None
 
 def test_procedure(name, age, living_address, registration_address, email, phone, inn, passport, title, description):
-    args = (name, age, living_address, registration_address, email, phone, inn, passport, title, description)
+    print(type(living_address), type(registration_address), type(description))
+    #la = register_adapter(living_address, Json)
+    #ra = register_adapter(registration_address, Json)
+    #desc = register_adapter(description, Json)
+    la = json.dumps(living_address)
+    ra = json.dumps(registration_address)
+    desc = json.dumps(description)
+    args = [name, age, la, ra, email, phone, inn, passport, title, desc]
+    print(args)
+
     result = cursor.callproc('registration_client_phys', args)
     print(result)
 
