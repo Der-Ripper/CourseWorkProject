@@ -1,3 +1,3 @@
-DB_NAME = 'CourseWork5'
-DB_USER = 'postgres'
-DB_PASSWORD = '!tim-SQL#'
+DB_NAME = 'DB_NAME'
+DB_USER = 'DB_USER'
+DB_PASSWORD = 'DB_PASSWORD'
