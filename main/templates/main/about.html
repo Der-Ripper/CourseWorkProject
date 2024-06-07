@@ -6,9 +6,20 @@
 <div class="sidenav">
     <a href="{% url 'home' %}"><li><i class="home"></i>Главная</li></a>
     <a href="{% url 'about' %}"><li><i class="about"></i>О нас</li></a>
-    <a href="{% url 'auth' %}"><li><i class="auth"></i>Авторизация</li></a>
-    <a href="{% url 'registr' %}"><li><i class="regist"></i>Регистрация</li></a>
-
+    {% if request.user.is_authenticated%}
+    {% if user_data.role == 2 %}
+    <a href="{% url 'branch_claims' %}"><li><i class="claim"></i>Заявки филиала</li></a>
+    {% elif user_data.role == 3 %}
+    <a href="{% url 'department_claims' %}"><li><i class="claim"></i>Заявки отдела</li></a>
+    {% else %}
+    <a href="{% url 'user_info' %}"><li><i class="claim"></i>Профиль</li></a>
+    <a href="{% url 'claim' %}"><li><i class="claim"></i>Подать заявку</li></a>
+    {% endif %}
+    <a href="{% url 'logout' %}"><li><i class="logout"></i>Выход</li></a>
+    {% else %}
+    <a href="{% url 'login' %}"><li><i class="login"></i>Авторизация</li></a>
+    <a href="{% url 'signup' %}"><li><i class="signup"></i>Регистрация</li></a>
+    {% endif %}
 </div>
 <div class="main">
     <h1>Заголовок страницы про нас</h1>

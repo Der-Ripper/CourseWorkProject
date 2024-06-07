@@ -1,17 +1,56 @@
-{% extends 'main/layout.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <form method="post" action="{% url 'user_info' %}">
+            {% csrf_token %}
+            {{ form.as_p }}
+        </form>
+        {% if messages %}
+            <div class="alert alert-danger">
+                {% for message in messages %}
+                    <div>{{ message }}</div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        {% if user %}
+            <div>
+                {% if user.phy_or_yur == 1%}
+                <h3>Данные физического лица</h3>
+                {% else %}
+                <h3>Данные юридического лица</h3>
+                {% endif %}
+                <p>ID                           : {{ user.id }}</p>
+                <p>Имя пользователя             : {{ user.login}}</p>
+                <p>ФИО                          : {{ user.name }}</p>
+                <p>Возраст                      : {{ user.age }}</p>
+                <p>Адрес проживание (Улица)     : {{ user.alstreet }}</p>
+                <p>Адрес проживание (Дом)       : {{ user.alhouse }}</p>
+                <p>Адрес регистрации (Улица)    : {{ user.arstreet }}</p>
+                <p>Адрес регистрации (Дом)      : {{ user.arhouse }}</p>
+                <p>Электронная почта            : {{ user.email }}</p>
+                <p>Номер телефона               : {{ user.phone }}</p>
 
-{% block title %}О физике{% endblock %}
-
-{% block content %}
-<div class="main">
-    <h1>Данные физ лица</h1>
-    <p>Имя - {{name}}</p>
-    <p>Возраст - {{age}}</p>
-    <p>Email - {{email}}</p>
-    <p>Физик(1) или юрик(2) - {{phy_or_yur}}</p>
-    <p></p>
-    <form action="{% url 'claim' %}">
-        <input type="submit" value="Создать заявку" />
-    </form>
-</div>
-{% endblock %}
+                <!-- Добавьте другие поля пользователя, если необходимо -->
+                <form action="{% url 'claim' %}" method="post">
+                    {% csrf_token %}
+                    <input type="submit" value="Создать заявку" />
+                </form>
+                <form action="{% url 'watch_claims' %}">
+                    <input type="submit" value="Смотреть заявки" />
+                </form>
+                <br>
+                <br>
+                <form action="{% url 'home' %}">
+                    <input type="submit" value="Домой" />
+                </form>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои заявки</title>
+</head>
+<body>
+    <h3>Заявка</h3>
+    <p>ID       : {{ claim_data.id }}</p>
+    <p>Статус   : {{ claim_data.status}}</p>
+    <p>ФИО      : {{ claim_data.name }}</p>
+    <p>Возраст  : {{ claim_data.age }}</p>
+    <p>Название : {{ claim_data.title }}</p>
+    <p>Описание : {{ claim_data.description }}</p>
+    <br>
+    <form action="{% url 'home' %}">
+        <input type="submit" value="Домой" />
+    </form>
+</body>
+</html>

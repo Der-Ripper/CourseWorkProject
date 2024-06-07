@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h4>ЗАЯВКИ ФИЛИАЛА</h4>
+    {% for claim_data in claims_data %}
+    <p>
+    <p>Номер    : {{claim_data.number}}</p>
+    <p>Статус   : {{claim_data.status}}</p>
+    <p>Отдел    : {{claim_data.name}}</p>
+    {% if claim_data.name == 'Unknown1'%}
+    <input type="text" placeholder="Отдел" name="department" required>
+    <br>
+    {% endif %}
+    <br>
+    {% endfor %}
+    <br>
+    <form action="{% url 'home' %}">
+        <input type="submit" value="Домой" />
+    </form>
+</body>
+</html>

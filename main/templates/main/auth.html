@@ -3,7 +3,7 @@
 {% block title %}Главная{% endblock %}
 
 {% block content %}
-<form action="{% url 'user_info' %}" method="get">
+<form action="{% url 'user_info' %}" method="post">
     <div class="imgcontainer">
       <img src="img_avatar2.png" alt="Avatar" class="avatar">
     </div>
@@ -16,9 +16,7 @@
       <input type="password" placeholder="Enter Password" name="psw" required>
   
       <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
+
     </div>
   
     <div class="container" style="background-color:#f1f1f1">

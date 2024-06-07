@@ -3,22 +3,11 @@
 {% block title %}Главная{% endblock %}
 
 {% block content %}
+{% if request.user.is_authenticated %}
 <form action="{% url 'send_claim' %}" method="get" style="border:1px solid #ccc">
     <div class="container">
       <h1>Заявка</h1>
       <p>Заполняй поля</p>
-      <hr>
-
-      <label>
-        <input type="radio" name="phy_or_yur" value="1">
-        Физик
-      </label>
-      <br>
-      <label>
-        <input type="radio" name="phy_or_yur" value="2">
-        Юрик
-      </label>
-      <br>
 
       <label for="name"><b>Имя дурачка</b></label>
       <input type="text" placeholder="Введи свое имя" name="name" required>
@@ -48,9 +37,22 @@
       <label for="inn"><b>ИНН</b></label>
       <input type="text" placeholder="Какие-то циферки..." name="inn" required>
 
+      {% if user_data.pory == 1%}
       <label for="passport"><b>Паспортные данные</b></label>
       <input type="text" placeholder="Спасибо, возьму кредит" name="passport" required>
 
+      {% else %}
+
+      <label for="ogrn"><b>ОГРН</b></label>
+      <input type="text" placeholder="ОГРН" name="ogrn" required>
+
+      <label for="kpp"><b>КПП</b></label>
+      <input type="text" placeholder="КПП" name="kpp" required>
+
+      <label for="okved"><b>ОКВЕД</b></label>
+      <input type="text" placeholder="ОКВЕД" name="okved" required>
+      
+      {% endif %}
       <label for="title"><b>Название проблемы</b></label>
       <input type="text" placeholder="Название" name="title" required>
 
@@ -63,5 +65,7 @@
       </div>
     </div>
   </form>
-  
+{% else %}
+<label for="name"><b>Имя дурачка</b></label>
+{% endif %}
 {% endblock %}
